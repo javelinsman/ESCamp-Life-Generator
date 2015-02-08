@@ -1,1 +1,66 @@
-hi
+<!DOCTYPE html>
+{% verbatim %}
+<html>
+	<head>
+		<title>영웅전기</title>
+		<meta charset="utf-8" />
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+		<script src="static/main/script.js"></script>
+		<style>
+			body { background-color: #aa9977 }
+			.AppName { text-align: center; font-size: 400% }
+			.NameForm { text-align: center; margin-bottom: 20px;} 
+			img { vertical-align: bottom; }
+			table { margin-left: auto; margin-right: auto; }
+			table, th, td { border-collapse: collapse; border-spacing: 0;
+				padding-left: 15px; padding-right: 15px;}
+			.Content { border-left: 1px solid #aaaaaa; }
+			.TableBody { -webkit-animation: FadeIn 0.5s ease-out }
+			@-webkit-keyframes FadeIn{
+				0%{
+					opacity: 0;
+					-webkit-transform: scale(0.8);
+				}
+				10%{
+					opacity: 0;
+					-webkit-transform: scale(0.8);
+				}
+				50%{
+					opacity: 0.4;
+					-webkit-transform: scale(1.2);
+				}
+				90%{
+					opacity: 1;
+					-webkit-transform: scale(1);
+				100%{
+					opacity: 1;
+					-webkit-transform: scale(1);
+				}
+			}
+		</style>
+	</head>
+	<body ng-app ng-controller="storyController">
+		<h1 class="AppName">영웅전기電氣</h1>
+		<div class="NameForm">
+			<input type="text" ng-model="name"/>
+			<button ng-click="requestLifeStart()">시작!</button>
+		</div>
+		<table >
+			<tr class="TableHead">
+				<th>이벤트</th>
+				<th>지능</th>
+				<th>건강</th>
+				<th>외모</th>
+				<th class="Content">일대기</th>
+			</tr>
+			<tr class="TableBody" ng-repeat="story in stories">
+				<td><img ng-src="static/main/{{story.isEvent}}.png" /></td>
+                <td ng-bind="story.intel"></td>
+                <td ng-bind="story.health"></td>
+                <td ng-bind="story.look"></td>
+				<td ng-bind="story.content" class="Content" width="70%"></td>
+			</tr>
+		</table>
+	</body>
+</html>
+{% endverbatim %}
